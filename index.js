@@ -19,3 +19,13 @@ db.sequelize.sync().then(() => {
  .catch((err) => {
     console.log(err);
  })
+
+ app.post('/Kandang', async (req, res) => {
+    const data = req.body;
+    try {
+        const kandang = await db.Kandang.create(data);
+        res.send(kandang);
+    } catch (error) {
+        res.status(500).send({ message: error.message });
+    }
+});
