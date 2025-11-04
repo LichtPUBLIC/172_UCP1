@@ -32,7 +32,7 @@ db.sequelize.sync().then(() => {
 
 app.get('/Kandang', async (req, res) => {
     try {
-        const kandang = await db.kandang.findAll();
+        const kandang = await db.Kandang.findAll();
         res.send(kandang);
     } catch (error) {
         res.status(500).send({ message: error.message });
@@ -56,7 +56,7 @@ app.put('/kandang/:id', async (req, res) => {
 app.delete('/kandang/:id', async (req, res) => {
     const id = req.params.id;
     try {
-        const kandang = await db.kandang.findByPk(id);
+        const kandang = await db.Kandang.findByPk(id);
         if (!kandang) {
             return res.status(404).send({ message: 'Kandang not found' });
         }
